@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <h1>Please Make a choice</h1>
+  <form id="root-tree">
+    <div >
+      <label id="select--id" aria-label="tree-root">Tree Root: </label>
+      <select id="tree--root" name="tree-root" aria-label="tree-root" aria-labelledby="#select--id">
+        {%  if message is empty %}
+          <option> Select an Option</option>
+          {% for option in options %}
+            <option id="{{ option.id }}" >{{ option.name|e }}</option>
+          {% endfor %}
+        {% else %}
+          <option> {{ options.message }}</option>
+        {% endif %}
+      </select>
+    </div>
+    <div id="tree"></div>
+
+  </form>
+{% endblock %}
+{% block javascripts %}
+  <script type="text/javaScript" src="{{ asset('build/js/app.js') }}"></script>
+{%  endblock %}
